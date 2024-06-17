@@ -49,13 +49,13 @@ function ConvertHandler() {
 
     const match = result.match(/[a-zA-Z]/);
 
-    result.substring(match.index, result.length);
+    const unit = result.substring(match.index, result.length);
 
-    if (!result.match(/^(gal|L|mi|km|lbs|kg)$/)) {
+    if (!unit.match(/^(gal|L|mi|km|lbs|kg)$/)) {
       throw new Error('Unit not supported.');
     }
 
-    return result;
+    return result = unit;
   };
 
   this.getReturnUnit = function (initUnit) {
@@ -119,7 +119,9 @@ function ConvertHandler() {
         console.log('convertString bad case detected');
     }
 
-    return result = unit;
+    result = unit
+
+    return result;
   };
 
   this.convert = function (initNum, initUnit) {
@@ -127,12 +129,40 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     let result;
+    console.log(initUnit)
+    switch (initUnit) {
+      case 'gal':
+        result = initNum * galToL;
+        break
+      case 'L':
+        result = initNum / galToL;
+        break
+      case 'mi':
+        result = initNum * miToKm;
+        break
+      case 'km':
+        result = initNum / miToKm;
+        break
+      case 'lbs':
+        result = initNum * lbsToKg;
+        break
+      case 'kg':
+        result = initNum / lbsToKg;
+        break
+      default:
+        console.log('convertNumber bad case detected');
+    }
 
-    return result;
+    return result.toFixed(5);
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
     let result;
+
+    const spellOutInitUnit = this.spellOutUnit(initUnit)
+    const spellOutReturnUnit = this.spellOutUnit(returnUnit)
+
+    result = `${initNum} ${spellOutInitUnit} converts to ${returnNum} ${spellOutReturnUnit}`
 
     return result;
   };
