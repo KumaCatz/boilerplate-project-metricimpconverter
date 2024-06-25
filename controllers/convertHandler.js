@@ -49,9 +49,9 @@ function ConvertHandler() {
 
     const match = result.match(/[a-zA-Z]/);
 
-    const unit = result.substring(match.index, result.length);
+    const unit = result.substring(match.index, result.length).toLowerCase();
 
-    if (!unit.match(/^(gal|L|mi|km|lbs|kg)$/)) {
+    if (!unit.match(/^(gal|l|mi|km|lbs|kg)$/)) {
       throw new Error('Unit not supported.');
     }
 
@@ -65,7 +65,7 @@ function ConvertHandler() {
       case 'gal':
         result = 'L';
         break;
-      case 'L':
+      case 'l':
         result = 'gal';
         break;
       case 'mi':
@@ -95,7 +95,7 @@ function ConvertHandler() {
         unit = 'gallons';
 
         break;
-      case 'L':
+      case 'l':
         unit = 'liters';
 
         break;
@@ -133,7 +133,7 @@ function ConvertHandler() {
       case 'gal':
         result = initNum * galToL;
         break
-      case 'L':
+      case 'l':
         result = initNum / galToL;
         break
       case 'mi':
