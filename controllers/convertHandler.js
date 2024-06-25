@@ -96,7 +96,7 @@ function ConvertHandler() {
 
         break;
       case 'L':
-        unit = 'litters';
+        unit = 'liters';
 
         break;
       case 'mi':
@@ -129,7 +129,6 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     let result;
-    console.log(initUnit)
     switch (initUnit) {
       case 'gal':
         result = initNum * galToL;
