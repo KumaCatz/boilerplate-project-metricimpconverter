@@ -55,6 +55,10 @@ function ConvertHandler() {
       throw new Error('Unit not supported.');
     }
 
+    if (unit === 'l') {
+      return result = 'L'
+    }
+
     return result = unit;
   };
 
@@ -65,7 +69,7 @@ function ConvertHandler() {
       case 'gal':
         result = 'L';
         break;
-      case 'l':
+      case 'L':
         result = 'gal';
         break;
       case 'mi':
@@ -95,7 +99,7 @@ function ConvertHandler() {
         unit = 'gallons';
 
         break;
-      case 'l':
+      case 'L':
         unit = 'liters';
 
         break;
@@ -133,7 +137,7 @@ function ConvertHandler() {
       case 'gal':
         result = initNum * galToL;
         break
-      case 'l':
+      case 'L':
         result = initNum / galToL;
         break
       case 'mi':

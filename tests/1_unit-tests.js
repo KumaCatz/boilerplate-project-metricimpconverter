@@ -24,19 +24,19 @@ suite('Unit Tests', function () {
     assert.equal(convertHandler.getNum('kg'), 1);
   });
   test('convertHandler should correctly read each valid input unit.', () => {
-    const input = ['mi', 'km', 'gal', 'l', 'lbs', 'kg']
+    const input = ['mi', 'km', 'gal', 'L', 'lbs', 'kg']
     input.forEach(val => assert.equal(convertHandler.getUnit(val), val))
   });
   test('convertHandler should correctly return an error for an invalid input unit.', () => {
     assert.throws(() => convertHandler.getUnit('mlml'));
   });
   test('convertHandler should return the correct return unit for each valid input unit.', () => {
-    const input = ['mi', 'km', 'gal', 'l', 'lbs', 'kg']
+    const input = ['mi', 'km', 'gal', 'L', 'lbs', 'kg']
     const result = ['km', 'mi', 'L', 'gal', 'kg', 'lbs']
     input.forEach((val, i) => assert.equal(convertHandler.getReturnUnit(val), result[i]))
   });
   test('convertHandler should correctly return the spelled-out string unit for each valid input unit.', () => {
-    const input = ['mi', 'km', 'gal', 'l', 'lbs', 'kg']
+    const input = ['mi', 'km', 'gal', 'L', 'lbs', 'kg']
     const result = ['miles', 'kilometers', 'gallons', 'liters', 'pounds', 'kilograms']
     input.forEach((val, i) => assert.equal(convertHandler.spellOutUnit(val), result[i]))
   })
@@ -44,7 +44,7 @@ suite('Unit Tests', function () {
     assert.equal(convertHandler.getReturnUnit('gal'), 'L')
   })
   test('convertHandler should correctly convert L to gal.', () => {
-    assert.equal(convertHandler.getReturnUnit('l'), 'gal')
+    assert.equal(convertHandler.getReturnUnit('L'), 'gal')
   })
   test('convertHandler should correctly convert mi to km.', () => {
     assert.equal(convertHandler.getReturnUnit('mi'), 'km')
