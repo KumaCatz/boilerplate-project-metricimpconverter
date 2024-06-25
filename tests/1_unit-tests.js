@@ -18,7 +18,7 @@ suite('Unit Tests', function () {
     assert.isNumber(convertHandler.getNum('12.2/2'));
   });
   test('convertHandler should correctly return an error on a double-fraction (i.e. 3/2/3).', () => {
-    assert.throws(() => convertHandler.getNum('3/2/4'));
+    assert.equal(convertHandler.getNum('3/2/4'), undefined);
   });
   test('convertHandler should correctly default to a numerical input of 1 when no numerical input is provided.', () => {
     assert.equal(convertHandler.getNum('kg'), 1);
@@ -28,7 +28,7 @@ suite('Unit Tests', function () {
     input.forEach(val => assert.equal(convertHandler.getUnit(val), val))
   });
   test('convertHandler should correctly return an error for an invalid input unit.', () => {
-    assert.throws(() => convertHandler.getUnit('mlml'));
+    assert.equal(convertHandler.getUnit('mlml'), undefined);
   });
   test('convertHandler should return the correct return unit for each valid input unit.', () => {
     const input = ['mi', 'km', 'gal', 'L', 'lbs', 'kg']
